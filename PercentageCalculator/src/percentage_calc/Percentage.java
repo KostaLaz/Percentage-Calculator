@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Percentage extends JFrame {
 
@@ -64,6 +66,15 @@ public class Percentage extends JFrame {
 		txtField2.setColumns(10);
 		
 		JButton Calculate = new JButton("Calculate");
+		Calculate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				float num1, num2, resoult;
+				num1 = Float.parseFloat(txtField1.getText());
+				num2 = Float.parseFloat(txtField2.getText());
+				resoult = (num2 / 100) * num1;
+				txtField3.setText(String.valueOf(resoult));
+			}
+		});
 		Calculate.setBounds(124, 143, 89, 23);
 		contentPane.add(Calculate);
 		
@@ -73,10 +84,22 @@ public class Percentage extends JFrame {
 		txtField3.setColumns(10);
 		
 		JButton Clear = new JButton("Clear");
+		Clear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				txtField1.setText("");
+				txtField2.setText("");
+				txtField3.setText("");
+			}
+		});
 		Clear.setBounds(124, 197, 89, 23);
 		contentPane.add(Clear);
 		
 		JButton Exit = new JButton("Exit");
+		Exit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);
+			}
+		});
 		Exit.setBounds(310, 197, 89, 23);
 		contentPane.add(Exit);
 	}
